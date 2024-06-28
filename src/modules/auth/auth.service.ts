@@ -16,10 +16,10 @@ export class AuthService {
     if(userfound) throw new BadRequestException('user already exists')
       
     const hassedPassword = await hash(user.password);
-   if(!hassedPassword) throw new BadRequestException('user not created');
+    if(!hassedPassword) throw new BadRequestException('user not created');
 
-    const {confirmPassword, ...rest} = user;
-
+    const {confirmPassword,  ...rest} = user;
+   
     const newUser =  await this.usersRepository.createUser({...rest, password: hassedPassword});
 
     return newUser

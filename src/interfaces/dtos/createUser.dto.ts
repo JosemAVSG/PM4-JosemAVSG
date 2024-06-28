@@ -43,7 +43,7 @@ export class CreateUserDto {
     @IsNotEmpty()
     city: string;
 
-    @IsEmpty()
-    isAdmin: boolean
+    // @IsEmpty()
+    // isAdmin: boolean
 
 }
