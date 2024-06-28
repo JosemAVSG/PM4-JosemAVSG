@@ -17,6 +17,13 @@ export class CreateUserDto {
     { message: 'password must contain at least one lowercase letter, one uppercase letter, one number, and one special character',  })   
     password: string;
 
+    @IsString() 
+    @IsNotEmpty()
+    @Length(8, 15)
+    @Matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%._^&*])/, 
+    { message: 'password must contain at least one lowercase letter, one uppercase letter, one number, and one special character',  })   
+    confirmPassword: string;
+
     @IsString()
     @Length(3, 80)
     @IsNotEmpty()

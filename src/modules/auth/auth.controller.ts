@@ -49,10 +49,9 @@ export class AuthController {
   }
 
   @Post('signup')
-  async createUser(@Res() res: Response,@Body() body :{user:CreateUserDto, confirmPassword:string} ) {
-    const { user, confirmPassword } = body;
+  async createUser(@Res() res: Response,@Body() user: CreateUserDto  ) {
     
-    if (user.password !== confirmPassword ||!user.password ||!confirmPassword) {
+    if (user.password !== user.confirmPassword||!user.password ||!user.confirmPassword) {
       throw new BadRequestException('Passwords do not match!');
     }
     try {
@@ -66,10 +65,9 @@ export class AuthController {
       };
 
       const token = this.jwtService.sign(userPayload);
-      console.log(token);
-      
+        
 
-      res.status(200).send({ message: 'User Created', newUser });
+      res.status(200).send({ message: 'User Created', newUser, token });
     } catch (error) {
       throw new BadRequestException('User not created !' + error);
     }
