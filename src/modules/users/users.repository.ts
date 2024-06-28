@@ -34,9 +34,9 @@ export class UsersRepository extends Repository<Users> {
   public async createUser(user: Partial<CreateUserDto>): Promise<Omit<Users, 'password'>> {
     
     const newUser = this.usersRepository.create(user);
-    await this.usersRepository.save(newUser);
-    return newUser
-    
+    const userCreated = await this.usersRepository.save(newUser);
+    const {password, ...rest}= userCreated
+    return rest;
     
   }
 

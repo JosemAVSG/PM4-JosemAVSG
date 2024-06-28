@@ -10,7 +10,7 @@ export class AuthService {
 
  
 
-   async singUp (user: CreateUserDto) : Promise< Omit< Users, 'password'> | undefined> {
+   async singUp (user: CreateUserDto) : Promise<Omit< Users, 'password'> | undefined> {
    
     const userfound = await this.usersRepository.getUserByEmail(user.email);
     if(userfound) throw new BadRequestException('user already exists')
@@ -21,8 +21,9 @@ export class AuthService {
     const {confirmPassword,  ...rest} = user;
    
     const newUser =  await this.usersRepository.createUser({...rest, password: hassedPassword});
-
-    return newUser
+    
+   
+    return newUser;
     
    }
 
