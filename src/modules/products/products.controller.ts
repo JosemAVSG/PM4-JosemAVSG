@@ -10,7 +10,6 @@ import { Roles } from '../../interfaces/roles.enum';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Products')
-@UseGuards(AuthGuard)
 @Controller('products')
 export class ProductsController {
 
@@ -47,12 +46,14 @@ export class ProductsController {
         }
     }
     @ApiBearerAuth()
+    @UseGuards(AuthGuard)
     @Get('category/:id')
     async getProductsByCategory( @Res () res: Response, @Param('id', ParseUUIDPipe) id: string) {
         const products = await this.productsService.getProductbyCategoryId(id);
         res.status(200).json(products);
     }
     @ApiBearerAuth()
+    @UseGuards(AuthGuard)
     @Post()
     async createProduct( @Res() res: Response, @Body() product:CreateProductDto) {
         try {
@@ -66,9 +67,10 @@ export class ProductsController {
 
     }
     @ApiBearerAuth()
+    
     @Put(':id')
     @Role(Roles.ADMIN)
-    @UseGuards(RoleGuard)
+    @UseGuards(AuthGuard, RoleGuard)
     async updateProduct( @Param('id', ParseUUIDPipe) id: string, @Res() res: Response, @Body() product: Products) {
 
 
@@ -84,6 +86,7 @@ export class ProductsController {
         }
     }
     @ApiBearerAuth()
+    @UseGuards(AuthGuard)
     @Delete(':id')
     async deleteProduct(@Param('id', ParseUUIDPipe) id: string, @Res() res: Response) {
 
