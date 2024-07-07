@@ -10,7 +10,6 @@ import { Roles } from '../../interfaces/roles.enum';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Products')
-
 @UseGuards(AuthGuard)
 @Controller('products')
 export class ProductsController {

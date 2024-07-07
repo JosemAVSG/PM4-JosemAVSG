@@ -9,7 +9,7 @@ export class AuthGuard implements CanActivate {
      constructor(private readonly jwtService: JwtService) {}
 
     private readonly excludedRoutes :{path:string, method:string}[] = [
-        {path: '/users', method: 'POST'},
+        {path:'/users', method: 'POST'},
         {path:'/products', method: 'GET'},
         {path:'/products/:id', method: 'GET'},
         {path:'/orders', method: 'GET'},
