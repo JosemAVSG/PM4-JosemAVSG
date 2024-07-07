@@ -53,7 +53,7 @@ export class CreateUserDto {
     address: string;
 
         /**
-         *   "phone": 123456789
+         *   "phone": "123456789"
          */
 
     @IsNumberString()
