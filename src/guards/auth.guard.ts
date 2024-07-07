@@ -10,9 +10,9 @@ export class AuthGuard implements CanActivate {
 
     private readonly excludedRoutes :{path:string, method:string}[] = [
         {path:'/users', method: 'POST'},
+        {path:'/orders', method: 'GET'},
         {path:'/products', method: 'GET'},
         {path:'/products/:id', method: 'GET'},
-        {path:'/orders', method: 'GET'},
     ];
     private isExcluded(url: string, method: string): boolean {
         return this.excludedRoutes.some(route => {
