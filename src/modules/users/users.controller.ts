@@ -10,14 +10,13 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Users')
 @UseGuards(AuthGuard)
-@ApiBearerAuth()
 @Controller('users')
 export class UsersController {
     constructor(private usersService: UsersService) {}
     @Get()
-    
     @Role(Roles.ADMIN)
     @UseGuards(RoleGuard)
+    @ApiBearerAuth()
     async getUsers( @Res () res: Response, @Query('page') page: number = 1, @Query('limit') limit: number = 5) {
 
         

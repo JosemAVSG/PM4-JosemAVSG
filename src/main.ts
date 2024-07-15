@@ -10,7 +10,11 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.use(new LoggerMiddleware().use);
-
+  app.enableCors({
+    origin: '*', // Permitir todas las solicitudes de origen
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type, Accept',
+  });
   const seedServiceCategory = app.get(CategorySeedService);
   await seedServiceCategory.seed();
 

@@ -56,8 +56,6 @@ export class UsersRepository extends Repository<Users> {
     if (user) {
       await this.usersRepository.remove(user);
     }
-   
- 
   }
 
   async getUserByCredentials(email: string, password: string): Promise<Users | null> {
