@@ -31,7 +31,6 @@ export class OrdersController {
     async getOrder(@Res() res: Response,@Body() body: { user_id: string}) {
 
         try {
-            
             const orders = await this.ordersService.getOrders();
             res.status(200).json(orders);
         } catch (error) {

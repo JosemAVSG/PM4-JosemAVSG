@@ -18,7 +18,6 @@ export class UsersController {
     @UseGuards(RoleGuard)
     @ApiBearerAuth()
     async getUsers( @Res () res: Response, @Query('page') page: number = 1, @Query('limit') limit: number = 5) {
-
         
         const pageNumber = Number(page) || 1;
         const limitNumber = Number(limit) || 5;
@@ -53,7 +52,7 @@ export class UsersController {
             throw new NotFoundException('User not updated !'+ error);
         }      
     }
-    
+    @ApiBearerAuth()
     @Delete(':id')
     async deleteUser( @Param('id', ParseUUIDPipe) id: string, @Res() res: Response) {
         

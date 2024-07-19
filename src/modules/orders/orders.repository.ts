@@ -50,9 +50,8 @@ export class OrdersRepository  {
           price: totalPrice,
           products: productsfound
        })
-      await this.orderDetailsRepository.save(orderDetails);
+       await this.orderDetailsRepository.save(orderDetails);
        
-
        return await this.ordersRepository.findOne({where: {id:orderSaved.id},relations:{ orderDetails: { products: true}}});
    }
 
