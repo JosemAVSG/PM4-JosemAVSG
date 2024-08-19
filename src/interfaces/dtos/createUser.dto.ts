@@ -1,3 +1,4 @@
+import { ApiHideProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsEmail, IsString, Length, Matches, IsNumberString, IsEmpty } from 'class-validator';
 export class CreateUserDto {
 
@@ -79,8 +80,9 @@ export class CreateUserDto {
     @Length(5, 20)
     @IsNotEmpty()
     city: string;
-
-    // @IsEmpty()
-    // isAdmin: boolean
+    
+    @ApiHideProperty()
+    @IsEmpty()
+    isAdmin?: boolean
 
 }

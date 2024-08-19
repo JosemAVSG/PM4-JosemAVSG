@@ -23,7 +23,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 
   const swaggerConfig = new DocumentBuilder()
-  .setTitle('Ecommerce API')
+  .setTitle('Ecommerce API Documentation By Jose González') 
   .setVersion('1.0')
   .setDescription('Ecommerce API Documentation for developers')
   .addBearerAuth()
