@@ -1,18 +1,17 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { Products } from "../products/products.entity";
 import { v4 as uuid } from 'uuid';
-@Entity()
+
+@Entity('categories')
 export class Categories {
     @PrimaryGeneratedColumn('uuid')
     id: string = uuid();
 
-    @Column({
-        type: 'varchar', length: 50})
+    @Column({type: 'varchar', length: 50})
     name: string;
 
     @OneToMany(() => Products, (product) => product.categories)
     products: Products[]
-
 }
 
 

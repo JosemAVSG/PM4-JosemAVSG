@@ -5,10 +5,7 @@ import { Categories } from './categories.entity';
 
 @Injectable()
 export class CategorySeedService {
-  constructor(
-    @InjectRepository(Categories)
-    private readonly categoryRepository: Repository<Categories>,
-  ) {}
+  constructor( @InjectRepository(Categories) private readonly categoryRepository: Repository<Categories>) {}
 
   async seed() {
     const categoriesData = [
